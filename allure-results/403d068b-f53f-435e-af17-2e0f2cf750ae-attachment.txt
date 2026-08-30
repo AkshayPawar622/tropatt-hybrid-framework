@@ -1,0 +1,45 @@
+[
+  '',
+  '1',
+  'Alice Johnson',
+  'alice@example.com',
+  'admin',
+  'active',
+  '\n                    \n                    \n                '
+]
+[
+  '',
+  '2',
+  'Bob Smith',
+  'bob@example.com',
+  'editor',
+  'active',
+  '\n                    \n                    \n                '
+]
+[
+  '',
+  '3',
+  'Charlie Brown',
+  'charlie@example.com',
+  'viewer',
+  'inactive',
+  '\n                    \n                    \n                '
+]
+[
+  '',
+  '4',
+  'Diana Prince',
+  'diana@example.com',
+  'admin',
+  'active',
+  '\n                    \n                    \n                '
+]
+[
+  '',
+  '5',
+  'Ethan Hunt',
+  'ethan@example.com',
+  'editor',
+  'pending',
+  '\n                    \n                    \n                '
+]

@@ -1,0 +1,13 @@
+COOKIES BEFORE GOTO: [
+  {
+    name: 'session-username',
+    value: 'standard_user',
+    domain: 'www.saucedemo.com',
+    path: '/',
+    expires: 1787979224,
+    httpOnly: false,
+    secure: false,
+    sameSite: 'Lax'
+  }
+]
+CURRENT URL: https://www.saucedemo.com/

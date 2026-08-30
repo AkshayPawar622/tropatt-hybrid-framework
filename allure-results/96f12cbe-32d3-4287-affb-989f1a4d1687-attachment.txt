@@ -1,0 +1,2 @@
+LOGIN URL: https://www.saucedemo.com/inventory.html
+AUTH SAVED: D:\FinalProject\tropatt-playwright-framework\auth\auth.json

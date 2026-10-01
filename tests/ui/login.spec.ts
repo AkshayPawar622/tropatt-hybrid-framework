@@ -11,7 +11,7 @@ test('Verify admin user login',async({pageManager,page})=>{
 }) 
 
 
-test.only ('Login with invalid username',async ({pageManager,page})=>{
+test ('Login with invalid username',async ({pageManager,page})=>{
     await pageManager.loginPage.open();
     await pageManager.loginPage.selectLanguage(environment.language);
     await pageManager.loginPage.login(environment.invalidUsername,environment.invalidPassword);

@@ -25,7 +25,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporting */
-  reporter: [['html', { open: 'never' }],['allure-playwright']],
+  reporter: [['html', { open: 'always' }],['allure-playwright']],
 
   use: {
     /* Application URL */

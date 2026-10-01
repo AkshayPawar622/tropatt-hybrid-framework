@@ -1,29 +1,21 @@
-// import {test,expect} from '../../fixtures/testFixtures'
-// import {environment} from '../../config/environment';
-
-// test('Verify admin user login',async({pageManager,page})=>{
-//      await pageManager.loginPage.open();
-//      await pageManager.loginPage.selectLanguage(environment.language);
-//     await pageManager.loginPage.login(environment.username,environment.password);
-
-//     await expect(page).toHaveURL(/dashboard/i)
-
-// }) 
+import {test,expect} from '../../fixtures/testFixtures'
+import {environment} from '../../config/environment';
 
 
-let arr= [10,20,30,40]
-let max = -Infinity;
-let secondMax = -Infinity;
+test('Verify admin user login',async({pageManager,page})=>{
+     await pageManager.loginPage.open();
+     await pageManager.loginPage.selectLanguage(environment.language);
+    await pageManager.loginPage.login(environment.username,environment.password);
+    await expect(page).toHaveURL(/dashboard/i)
 
-for (let num of arr) {
+}) 
 
-    if (num > max) {
-        secondMax = max; 10
-        max = num; 20
-    }
-    else if (num > secondMax && num < max) {
-        secondMax = num;
-    }
-}
 
-console.log(secondMax);
+test.only ('Login with invalid username',async ({pageManager,page})=>{
+    await pageManager.loginPage.open();
+    await pageManager.loginPage.selectLanguage(environment.language);
+    await pageManager.loginPage.login(environment.invalidUsername,environment.invalidPassword);
+    const error = await pageManager.loginPage.getErrorMessage();
+     expect(error).toContain('Invalid credentials')
+})
+

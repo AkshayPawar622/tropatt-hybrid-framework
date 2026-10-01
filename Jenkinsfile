@@ -7,6 +7,14 @@ pipeline {
     }
 }
 
+parameters {
+    choice(
+        name: 'ENV',
+        choices: ['qa', 'stage'],
+        description: 'Select test environment'
+    )
+}
+
     stages {
 
         stage('Checkout') {
@@ -21,17 +29,12 @@ pipeline {
             }
         }
 
-        stage('Install Playwright Browsers') {
-            steps {
-                sh 'npx playwright install --with-deps'
-            }
-        }
-
-        stage('Run Playwright Tests') {
-            steps {
-                sh 'npx playwright test'
-            }
-        }
+       stage('Run Playwright Tests') {
+    steps {
+        echo "Running tests on environment: ${params.ENV}"
+        sh 'npx playwright test'
+    }
+}
     }
 
     post {

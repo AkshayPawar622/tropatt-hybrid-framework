@@ -37,21 +37,24 @@ parameters {
 }
     }
 
-    post {
-
-        always {
-            archiveArtifacts(
-                artifacts: 'playwright-report/**',
-                allowEmptyArchive: true
-            )
-        }
-
-        success {
-            echo 'Playwright tests completed successfully'
-        }
-
-        failure {
-            echo 'Playwright tests failed'
-        }
+   post {
+    always {
+        publishHTML([
+            allowMissing: true,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'playwright-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright Report'
+        ])
     }
+
+    success {
+        echo 'Playwright tests completed successfully'
+    }
+
+    failure {
+        echo 'Playwright tests failed'
+    }
+}
 }

@@ -44,6 +44,7 @@ parameters {
        stage('Run Playwright Tests') {
     steps {
         echo "Running tests on environment: ${params.ENV}"
+         echo "Running tests on environment: ${params.ENV}"
         echo "Using browser: ${params.BROWSER}"
         echo "Test type: ${params.TEST_TYPE}"
         sh 'npx playwright test'

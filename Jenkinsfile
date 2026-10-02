@@ -12,16 +12,18 @@ parameters {
         name: 'ENV',
         choices: ['qa', 'stage'],
         description: 'Select test environment'
-    ),
+    )
+
     choice(
-        name: 'Browser',
-        choices:['chromium', 'fireforx', 'webkit'],
+        name: 'BROWSER',
+        choices: ['chromium', 'firefox', 'webkit'],
         description: 'Select browser for testing'
-    ),
+    )
+
     choice(
-        name: 'TestType',
-        choices:['smoke', 'regression', 'Sanity'],
-        description: ''
+        name: 'TEST_TYPE',
+        choices: ['smoke', 'regression', 'sanity'],
+        description: 'Select test type'
     )
 }
 
@@ -42,7 +44,8 @@ parameters {
        stage('Run Playwright Tests') {
     steps {
         echo "Running tests on environment: ${params.ENV}"
-        echo "Using browser: ${params.Browser}"
+        echo "Using browser: ${params.BROWSER}"
+        echo "Test type: ${params.TEST_TYPE}"
         sh 'npx playwright test'
     }
 }

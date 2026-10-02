@@ -14,18 +14,19 @@ export default defineConfig({
 
   /* Run tests in parallel */
   fullyParallel: false,
-
+  
   /* Prevent accidental test.only in CI */
   forbidOnly: !!process.env.CI,
 
   /* Retry failed tests only in CI */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
 
   /* Workers */
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporting */
   reporter: [['html', { open: 'always' }],['allure-playwright']],
+
 
   use: {
     /* Application URL */
@@ -48,12 +49,24 @@ export default defineConfig({
   },
 
   /* Browser projects */
-  projects: [
+ projects: [
     {
-      name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-      },
+        name: 'chromium',
+        use: {
+            ...devices['Desktop Chrome'],
+        },
     },
-  ],
+    {
+        name: 'firefox',
+        use: {
+            ...devices['Desktop Firefox'],
+        },
+    },
+    {
+        name: 'webkit',
+        use: {
+            ...devices['Desktop Safari'],
+        },
+    },
+],
 });

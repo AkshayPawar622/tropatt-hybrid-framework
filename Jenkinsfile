@@ -1,10 +1,5 @@
 pipeline {
 
-    environment {
-        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
-        PATH = "/usr/lib/jvm/java-21-openjdk-amd64/bin:${env.PATH}"
-    }
-
     agent {
     docker {
         image 'mcr.microsoft.com/playwright:v1.62.1'
@@ -45,12 +40,18 @@ parameters {
                 sh 'npm ci'
             }
         }
-        stage('Verify Java') {
+      stage('Verify Java') {
     steps {
-        sh 'echo JAVA_HOME=$JAVA_HOME'
-        sh 'which java'
-        sh 'java -version'
+        sh '''
+            echo "JAVA_HOME=$JAVA_HOME"
+            echo "PATH=$PATH"
+            ls -la /usr/lib/jvm || true
+            find /usr/lib/jvm -name java -type f 2>/dev/null || true
+            which java || true
+            java -version || true
+        '''
     }
+}
 }
 
        stage('Run Playwright Tests') {

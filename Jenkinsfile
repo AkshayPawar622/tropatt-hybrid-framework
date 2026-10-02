@@ -12,16 +12,6 @@ parameters {
         name: 'ENV',
         choices: ['qa', 'stage'],
         description: 'Select test environment'
-    ),
-    choice(
-        name: 'Browser',
-        choices:['chromium', 'fireforx', 'webkit'],
-        description: 'Select browser for testing'
-    ),
-    choice(
-        name: 'TestType',
-        choices:['smoke', 'regression', 'Sanity'],
-        description: ''
     )
 
     choice(

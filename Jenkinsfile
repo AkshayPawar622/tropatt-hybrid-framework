@@ -40,6 +40,13 @@ parameters {
                 sh 'npm ci'
             }
         }
+        stage('Verify Java') {
+    steps {
+        sh 'echo JAVA_HOME=$JAVA_HOME'
+        sh 'which java'
+        sh 'java -version'
+    }
+}
 
        stage('Run Playwright Tests') {
     steps {

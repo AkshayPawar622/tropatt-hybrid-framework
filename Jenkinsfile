@@ -65,16 +65,16 @@ pipeline {
                 echo "Using browser: ${params.BROWSER}"
                 echo "Test type: ${params.TEST_TYPE}"
 
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'tropatt-credentials',
-                        usernameVariable: 'TROPATT_USERNAME',
-                        passwordVariable: 'TROPATT_PASSWORD'
-                    )
-                ]) {
-                    sh "TEST_ENV=${params.ENV} npx playwright test --project=${params.BROWSER} --grep @${params.TEST_TYPE}"
-                }
-            }
+        sh 'rm -rf allure-results playwright-report'
+
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'tropatt-credentials',
+                usernameVariable: 'TROPATT_USERNAME',
+                passwordVariable: 'TROPATT_PASSWORD'
+            )
+        ]) {
+            sh "TEST_ENV=${params.ENV} npx playwright test --project=${params.BROWSER} --grep @${params.TEST_TYPE}"
         }
     }
 

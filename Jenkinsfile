@@ -46,6 +46,19 @@ pipeline {
             }
         }
 
+        stage('Verify Java') {
+            steps {
+                sh '''
+                    echo "JAVA_HOME=$JAVA_HOME"
+                    echo "PATH=$PATH"
+                    ls -la /usr/lib/jvm || true
+                    find /usr/lib/jvm -name java -type f 2>/dev/null || true
+                    which java || true
+                    java -version || true
+                '''
+            }
+        }
+
         stage('Run Playwright Tests') {
             steps {
                 echo "Running tests on environment: ${params.ENV}"
@@ -54,16 +67,14 @@ pipeline {
 
                 sh 'rm -rf allure-results playwright-report'
 
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'tropatt-credentials',
-                        usernameVariable: 'TROPATT_USERNAME',
-                        passwordVariable: 'TROPATT_PASSWORD'
-                    )
-                ]) {
-                    sh "TEST_ENV=${params.ENV} npx playwright test --project=${params.BROWSER} --grep @${params.TEST_TYPE}"
-                }
-            }
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'tropatt-credentials',
+                usernameVariable: 'TROPATT_USERNAME',
+                passwordVariable: 'TROPATT_PASSWORD'
+            )
+        ]) {
+            sh "TEST_ENV=${params.ENV} npx playwright test --project=${params.BROWSER} --grep @${params.TEST_TYPE}"
         }
     }
 

@@ -65,7 +65,7 @@ pipeline {
                 echo "Using browser: ${params.BROWSER}"
                 echo "Test type: ${params.TEST_TYPE}"
 
-        sh 'rm -rf allure-results playwright-report'
+                sh 'rm -rf allure-results playwright-report'
 
         withCredentials([
             usernamePassword(
@@ -79,6 +79,7 @@ pipeline {
     }
 
     post {
+
         always {
             publishHTML([
                 allowMissing: true,

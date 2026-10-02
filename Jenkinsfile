@@ -1,5 +1,10 @@
 pipeline {
 
+    environment {
+        JAVA_HOME = '/usr/lib/jvm/java-21-openjdk-amd64'
+        PATH = "/usr/lib/jvm/java-21-openjdk-amd64/bin:${env.PATH}"
+    }
+
     agent {
     docker {
         image 'mcr.microsoft.com/playwright:v1.62.1'

@@ -71,6 +71,9 @@ parameters {
             reportFiles: 'index.html',
             reportName: 'Playwright Report'
         ])
+         allure([
+            results: [[path: 'allure-results']]
+        ])
     }
 
     success {

@@ -6,11 +6,11 @@ const testEnv = (process.env.TEST_ENV || 'qa') as 'qa' | 'stage';
 
 const environments = {
     qa: {
-        baseURL: process.env.TROPATT_BASE_URL || '',
+        baseURL: 'https://demo.tropatt.com',
     },
 
     stage: {
-        baseURL: process.env.TROPATT_BASE_URL || '',
+        baseURL: 'https://demo.tropatt.com',
     },
 };
 

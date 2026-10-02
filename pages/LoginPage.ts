@@ -33,13 +33,7 @@ async selectLanguage(languageName:string):Promise<void>{
 async login(usernameInput: string, passwordInput: string): Promise<void> {
 
    await this.userName.fill(usernameInput);
-    await this.password.fill(passwordInput);
-  
-
-    console.log("Username:", await this.userName.inputValue());
-
-    console.log("Password:", await this.password.inputValue());
-
+    await this.password.fill(passwordInput);  
     await this.loginButton.click();
 
 }
